@@ -5,6 +5,7 @@ import { WINDOW_CONFIG } from "@/constants";
 import { ComponentType, useLayoutEffect, useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { Draggable } from "gsap/all";
 
 type WindowKey = keyof typeof WINDOW_CONFIG;
 
@@ -32,14 +33,14 @@ const WindowWrapper = <P extends object>(
 
     useGSAP(() => {
       const el = ref.current;
-      if (!el) return;
+      if (!el || !isOpen) return;
 
       const [instance] = Draggable.create(el, {
         onPress: () => focusWindow(windowKey),
       });
 
       return () => instance.kill();
-    }, []);
+    }, [isOpen]);
 
     useLayoutEffect(() => {
       const el = ref.current;
