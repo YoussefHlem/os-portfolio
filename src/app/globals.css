@@ -12,8 +12,8 @@ body {
 }
 
 @theme inline {
-  --font-georama: var(--font-georama-family);
-  --font-roboto: var(--font-roboto-family);
+  --font-georama: var(--font-georama);
+  --font-roboto: var(--font-roboto);
   --breakpoint-3xl: 1920px;
 }
 
