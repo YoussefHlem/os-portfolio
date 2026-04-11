@@ -1,0 +1,1 @@
+- make the navbar clickable and fully functional 
