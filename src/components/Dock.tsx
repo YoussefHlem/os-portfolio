@@ -54,7 +54,7 @@ const Dock = () => {
     };
   }, []);
 
-  const toggleApp = () => {};
+  const toggleApp = (app: { id: string; canOpen: boolean }) => {};
 
   return (
     <section id="dock">
