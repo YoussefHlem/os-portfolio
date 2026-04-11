@@ -7,6 +7,7 @@ import Dock from "@/components/Dock";
 import { Draggable } from "gsap/all";
 import gsap from "gsap";
 import TerminalWindow from "@/windows/Terminal";
+import SafariWindow from "@/windows/Safari";
 
 gsap.registerPlugin(Draggable);
 
@@ -18,6 +19,7 @@ export default function Home() {
       <Dock />
       {/*  Windows*/}
       <TerminalWindow />
+      <SafariWindow />
     </main>
   );
 }
