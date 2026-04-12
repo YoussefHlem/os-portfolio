@@ -4,9 +4,10 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
 import { useMemo, useRef } from "react";
-import { dockApps, type DockApp } from "@/constants";
+import { dockApps, locations, type DockApp } from "@/constants";
 import useWindowStore from "@/store/window";
 import useIsMobile from "@/hooks/useIsMobile";
+import useLocationStore from "@/store/location";
 
 const Dock = () => {
   const { openWindow, closeWindow, windows } = useWindowStore();
@@ -65,7 +66,15 @@ const Dock = () => {
 
   const hasOpenWindow = isMobile && Object.values(windows).some((w) => w.isOpen);
 
+  const { setActiveLocation } = useLocationStore();
+
   const toggleApp = (app: DockApp) => {
+    if (app.id === "trash") {
+      setActiveLocation(locations.trash);
+      openWindow("finder");
+      return;
+    }
+
     if (!app.canOpen) return;
     const win = windows[app.id];
     if (!win) return;

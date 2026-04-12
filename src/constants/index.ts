@@ -56,7 +56,7 @@ export type DockApp =
       id: "trash";
       name: string;
       icon: string;
-      canOpen: false;
+      canOpen: true;
     };
 
 export type BlogPost = {
@@ -161,7 +161,7 @@ const dockApps = [
     id: "trash",
     name: "Archive", // was "Trash"
     icon: "trash.png",
-    canOpen: false,
+    canOpen: true,
   },
 ] as const satisfies readonly DockApp[];
 
