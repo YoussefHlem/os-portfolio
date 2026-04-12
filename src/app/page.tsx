@@ -8,6 +8,7 @@ import { Draggable } from "gsap/all";
 import gsap from "gsap";
 import TerminalWindow from "@/windows/Terminal";
 import SafariWindow from "@/windows/Safari";
+import ResumeWindow from "@/windows/Resume";
 
 gsap.registerPlugin(Draggable);
 
@@ -20,6 +21,7 @@ export default function Home() {
       {/*  Windows*/}
       <TerminalWindow />
       <SafariWindow />
+      <ResumeWindow />
     </main>
   );
 }
