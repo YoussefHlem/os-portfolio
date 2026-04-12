@@ -4,7 +4,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
 import { useRef } from "react";
-import { dockApps } from "@/constants";
+import { dockApps, type DockApp } from "@/constants";
 import useWindowStore from "@/store/window";
 
 const Dock = () => {
@@ -56,12 +56,12 @@ const Dock = () => {
     };
   }, []);
 
-  const toggleApp = (app: { id: string; canOpen: boolean }) => {
-    if (!app.canOpen || !(app.id in windows)) return;
+  const toggleApp = (app: DockApp) => {
+    if (!app.canOpen) return;
+    const win = windows[app.id];
+    if (!win) return;
 
-    const window = windows[app.id as keyof typeof windows];
-
-    if (window.isOpen) {
+    if (win.isOpen) {
       closeWindow(app.id);
     } else {
       openWindow(app.id);
@@ -71,23 +71,23 @@ const Dock = () => {
   return (
     <section id="dock">
       <div ref={dockRef} className="dock-container">
-        {dockApps.map(({ id, name, icon, canOpen }) => (
-          <div key={id} className="relative flex justify-center">
+        {dockApps.map((app) => (
+          <div key={app.id} className="relative flex justify-center">
             <button
               type="button"
               className="dock-icon"
-              aria-label={name}
+              aria-label={app.name}
               data-tooltip-id="dock-tooltip"
-              data-tooltip-content={name}
+              data-tooltip-content={app.name}
               data-tooltip-delay-show={150}
-              disabled={!canOpen}
-              onClick={() => toggleApp({ id, canOpen })}
+              disabled={!app.canOpen}
+              onClick={() => toggleApp(app)}
             >
               <img
-                src={`images/${icon}`}
-                alt={name}
+                src={`images/${app.icon}`}
+                alt={app.name}
                 loading="lazy"
-                className={canOpen ? "" : "opacity-60"}
+                className={app.canOpen ? "" : "opacity-60"}
               />
             </button>
           </div>

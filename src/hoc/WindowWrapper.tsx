@@ -1,22 +1,28 @@
 "use client";
 
 import useWindowStore from "@/store/window";
-import { WINDOW_CONFIG } from "@/constants";
-import { ComponentType, useLayoutEffect, useRef } from "react";
+import { type WindowKey } from "@/constants";
+import {
+  type ComponentType,
+  type FC,
+  useLayoutEffect,
+  useRef,
+} from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { Draggable } from "gsap/all";
 
-type WindowKey = keyof typeof WINDOW_CONFIG;
-
 const WindowWrapper = <P extends object>(
   Component: ComponentType<P>,
   windowKey: WindowKey,
-) => {
-  const Wrapped = (props: P) => {
+): FC<P> => {
+  const Wrapped: FC<P> = (props) => {
     const { focusWindow, windows } = useWindowStore();
-    const { isOpen, zIndex } = windows[windowKey];
+    const win = windows[windowKey];
     const ref = useRef<HTMLElement | null>(null);
+
+    const isOpen = win?.isOpen ?? false;
+    const zIndex = win?.zIndex ?? 0;
 
     useGSAP(() => {
       const el = ref.current;
@@ -35,9 +41,14 @@ const WindowWrapper = <P extends object>(
       const el = ref.current;
       if (!el || !isOpen) return;
 
-      const [instance] = Draggable.create(el, {
+      const trigger = el.querySelector<HTMLElement>("#window-header");
+      if (!trigger) return;
+
+      const instance = Draggable.create(el, {
+        trigger,
         onPress: () => focusWindow(windowKey),
-      });
+      })[0];
+      if (!instance) return;
 
       return () => instance.kill();
     }, [isOpen]);

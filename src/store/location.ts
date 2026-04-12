@@ -1,8 +1,8 @@
 import { immer } from "zustand/middleware/immer";
 import { create } from "zustand";
-import { locations } from "@/constants";
+import { locations, type LocationNode } from "@/constants";
 
-type Location = (typeof locations)[keyof typeof locations];
+export type Location = LocationNode;
 
 type LocationStore = {
   activeLocation: Location;

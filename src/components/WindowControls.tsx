@@ -1,7 +1,11 @@
-import React from "react";
 import useWindowStore from "@/store/window";
+import { type WindowKey } from "@/constants";
 
-const WindowControls = ({ target }: { target: string }) => {
+type WindowControlsProps = {
+  target: WindowKey;
+};
+
+const WindowControls = ({ target }: WindowControlsProps) => {
   const { closeWindow } = useWindowStore();
 
   return (

@@ -1,3 +1,100 @@
+// ──────────────────────────────────────────────────────────────────────
+// Domain types. These are the single source of truth for the shapes of
+// the data literals below — the literals are validated against these
+// using `satisfies` so the narrow literal types are preserved.
+// ──────────────────────────────────────────────────────────────────────
+
+export type FileType = "txt" | "url" | "img" | "fig" | "pdf";
+export type LocationType = "work" | "about" | "resume" | "trash";
+
+type BaseNode = {
+  id: number;
+  name: string;
+  icon: string;
+  position?: string;
+};
+
+export type FileNode = BaseNode & {
+  kind: "file";
+  fileType: FileType;
+  href?: string;
+  imageUrl?: string;
+  description?: string[];
+  subtitle?: string;
+  image?: string;
+};
+
+export type FolderNode = BaseNode & {
+  kind: "folder";
+  windowPosition?: string;
+  children: LocationNode[];
+};
+
+export type LocationNode = FileNode | FolderNode;
+
+export type RootFolder = FolderNode & { type: LocationType };
+
+export type NavLink = {
+  id: number;
+  name: string;
+  type: WindowKey;
+};
+
+export type NavIcon = {
+  id: number;
+  img: string;
+};
+
+export type DockApp =
+  | {
+      id: WindowKey;
+      name: string;
+      icon: string;
+      canOpen: true;
+    }
+  | {
+      id: "trash";
+      name: string;
+      icon: string;
+      canOpen: false;
+    };
+
+export type BlogPost = {
+  id: number;
+  date: string;
+  title: string;
+  image: string;
+  link: string;
+};
+
+export type TechCategory = {
+  category: string;
+  items: string[];
+};
+
+export type Social = {
+  id: number;
+  text: string;
+  icon: string;
+  bg: string;
+  link: string;
+};
+
+export type PhotoLink = {
+  id: number;
+  icon: string;
+  title: string;
+};
+
+export type GalleryItem = {
+  id: number;
+  img: string;
+};
+
+// ──────────────────────────────────────────────────────────────────────
+// Data
+// ──────────────────────────────────────────────────────────────────────
+
 const navLinks = [
   {
     id: 1,
@@ -14,7 +111,7 @@ const navLinks = [
     name: "Resume",
     type: "resume",
   },
-];
+] as const satisfies readonly NavLink[];
 
 const navIcons = [
   {
@@ -33,7 +130,7 @@ const navIcons = [
     id: 4,
     img: "/icons/mode.svg",
   },
-];
+] as const satisfies readonly NavIcon[];
 
 const dockApps = [
   {
@@ -46,12 +143,6 @@ const dockApps = [
     id: "safari",
     name: "Articles", // was "Safari"
     icon: "safari.png",
-    canOpen: true,
-  },
-  {
-    id: "photos",
-    name: "Gallery", // was "Photos"
-    icon: "photos.png",
     canOpen: true,
   },
   {
@@ -72,7 +163,7 @@ const dockApps = [
     icon: "trash.png",
     canOpen: false,
   },
-];
+] as const satisfies readonly DockApp[];
 
 const blogPosts = [
   {
@@ -97,7 +188,7 @@ const blogPosts = [
     image: "/images/blog3.png",
     link: "https://jsmastery.com/blog/the-ultimate-guide-to-mastering-gsap-animations",
   },
-];
+] as const satisfies readonly BlogPost[];
 
 const techStack = [
   {
@@ -124,7 +215,7 @@ const techStack = [
     category: "Dev Tools",
     items: ["Git", "GitHub", "Docker"],
   },
-];
+] as const satisfies readonly TechCategory[];
 
 const socials = [
   {
@@ -155,7 +246,7 @@ const socials = [
     bg: "#05b6f6",
     link: "https://www.linkedin.com/company/javascriptmastery/posts/?feedView=all",
   },
-];
+] as const satisfies readonly Social[];
 
 const photosLinks = [
   {
@@ -183,7 +274,7 @@ const photosLinks = [
     icon: "/icons/gicon5.svg",
     title: "Favorites",
   },
-];
+] as const satisfies readonly PhotoLink[];
 
 const gallery = [
   {
@@ -202,7 +293,7 @@ const gallery = [
     id: 4,
     img: "/images/gal4.png",
   },
-];
+] as const satisfies readonly GalleryItem[];
 
 export {
   navLinks,
@@ -215,7 +306,7 @@ export {
   gallery,
 };
 
-const WORK_LOCATION = {
+const WORK_LOCATION: RootFolder = {
   id: 1,
   type: "work",
   name: "Work",
@@ -383,7 +474,7 @@ const WORK_LOCATION = {
   ],
 };
 
-const ABOUT_LOCATION = {
+const ABOUT_LOCATION: RootFolder = {
   id: 2,
   type: "about",
   name: "About me",
@@ -436,7 +527,7 @@ const ABOUT_LOCATION = {
   ],
 };
 
-const RESUME_LOCATION = {
+const RESUME_LOCATION: RootFolder = {
   id: 3,
   type: "resume",
   name: "Resume",
@@ -455,7 +546,7 @@ const RESUME_LOCATION = {
   ],
 };
 
-const TRASH_LOCATION = {
+const TRASH_LOCATION: RootFolder = {
   id: 4,
   type: "trash",
   name: "Trash",
@@ -488,9 +579,15 @@ export const locations = {
   about: ABOUT_LOCATION,
   resume: RESUME_LOCATION,
   trash: TRASH_LOCATION,
-};
+} satisfies Record<LocationType, RootFolder>;
 
 const INITIAL_Z_INDEX = 1000;
+
+type WindowConfigEntry = {
+  isOpen: boolean;
+  zIndex: number;
+  data: LocationNode | null;
+};
 
 const WINDOW_CONFIG = {
   finder: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
@@ -501,6 +598,9 @@ const WINDOW_CONFIG = {
   terminal: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
   txtfile: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
   imgfile: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
-};
+} satisfies Record<string, WindowConfigEntry>;
+
+export type WindowKey = keyof typeof WINDOW_CONFIG;
 
 export { INITIAL_Z_INDEX, WINDOW_CONFIG };
+export type { WindowConfigEntry };

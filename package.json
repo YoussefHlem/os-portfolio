@@ -6,10 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
+    "clsx": "^2.1.1",
     "dayjs": "^1.11.20",
     "gsap": "^3.14.2",
     "immer": "^11.1.4",

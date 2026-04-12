@@ -4,7 +4,15 @@ import dayjs from "dayjs";
 import useWindowStore from "@/store/window";
 
 const Navbar = () => {
-  const { openWindow } = useWindowStore();
+  const { openWindow, closeWindow, windows } = useWindowStore();
+
+  const toggleWindow = (key: (typeof navLinks)[number]["type"]) => {
+    if (windows[key]?.isOpen) {
+      closeWindow(key);
+    } else {
+      openWindow(key);
+    }
+  };
   return (
     <nav>
       <div>
@@ -13,7 +21,7 @@ const Navbar = () => {
 
         <ul>
           {navLinks.map((item) => (
-            <li key={item.id} onClick={() => openWindow(item.type)}>
+            <li key={item.id} onClick={() => toggleWindow(item.type)}>
               <p>{item.name}</p>
             </li>
           ))}

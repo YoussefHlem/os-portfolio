@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsc:*)",
+      "Bash(npm run:*)",
+      "Bash(git stash:*)",
+      "mcp__next-devtools__init",
+      "mcp__next-devtools__nextjs_index",
+      "mcp__next-devtools__nextjs_call"
+    ]
+  }
+}
