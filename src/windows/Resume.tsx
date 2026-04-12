@@ -1,5 +1,5 @@
 import React from "react";
-import WindowWrapper from "@/hoc/WindowWrapper";
+import WindowWrapper, { useMobileWindow } from "@/hoc/WindowWrapper";
 import WindowControls from "@/components/WindowControls";
 import { Download } from "lucide-react";
 import { Document, Page, pdfjs } from "react-pdf";
@@ -12,21 +12,25 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 ).toString();
 
 const Resume = () => {
+  const ctx = useMobileWindow();
+  const isMobile = ctx?.isMobile ?? false;
   return (
     <>
-      <div id={"window-header"}>
-        <WindowControls target={"resume"} />
-        <h2>Resume.pdf</h2>
+      {!isMobile && (
+        <div id={"window-header"}>
+          <WindowControls target={"resume"} />
+          <h2>Resume.pdf</h2>
 
-        <a
-          href={"files/resume.pdf"}
-          download
-          className={"cursor-pointer"}
-          title={"Download Resume"}
-        >
-          <Download className={"icon"} />
-        </a>
-      </div>
+          <a
+            href={"files/resume.pdf"}
+            download
+            className={"cursor-pointer"}
+            title={"Download Resume"}
+          >
+            <Download className={"icon"} />
+          </a>
+        </div>
+      )}
       <Document file={"files/resume.pdf"}>
         <Page pageNumber={1} renderTextLayer renderAnnotationLayer />
       </Document>
@@ -34,6 +38,6 @@ const Resume = () => {
   );
 };
 
-const ResumeWindow = WindowWrapper(Resume, "resume");
+const ResumeWindow = WindowWrapper(Resume, "resume", { title: "Resume.pdf" });
 
 export default ResumeWindow;

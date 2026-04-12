@@ -1,9 +1,18 @@
-import WindowWrapper from "@/hoc/WindowWrapper";
+import { useEffect } from "react";
+import WindowWrapper, { useMobileWindow } from "@/hoc/WindowWrapper";
 import WindowControls from "@/components/WindowControls";
 import useWindowStore from "@/store/window";
 
 const Text = () => {
   const data = useWindowStore((state) => state.windows.txtfile.data);
+  const ctx = useMobileWindow();
+  const isMobile = ctx?.isMobile ?? false;
+
+  useEffect(() => {
+    if (!isMobile || !ctx) return;
+    ctx.setTitle(data?.name ?? "Text");
+    return () => ctx.setTitle(undefined);
+  }, [isMobile, ctx, data?.name]);
 
   if (!data || data.kind !== "file") return null;
 
@@ -11,10 +20,12 @@ const Text = () => {
 
   return (
     <>
-      <div id={"window-header"}>
-        <WindowControls target={"txtfile"} />
-        <h2>{name}</h2>
-      </div>
+      {!isMobile && (
+        <div id={"window-header"}>
+          <WindowControls target={"txtfile"} />
+          <h2>{name}</h2>
+        </div>
+      )}
 
       <div className={"bg-white h-full overflow-auto p-6"}>
         {image && (
@@ -37,6 +48,6 @@ const Text = () => {
   );
 };
 
-const TextWindow = WindowWrapper(Text, "txtfile");
+const TextWindow = WindowWrapper(Text, "txtfile", { title: "Text" });
 
 export default TextWindow;

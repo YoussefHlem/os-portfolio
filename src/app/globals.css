@@ -11,6 +11,13 @@ body {
   background-position: center;
 }
 
+@media (max-width: 639px) {
+  html,
+  body {
+    background-image: url("/images/mobile-wallpaper.png");
+  }
+}
+
 @theme inline {
   --font-georama: var(--font-georama);
   --font-roboto: var(--font-roboto);
@@ -65,35 +72,88 @@ body {
   }
 
   #welcome {
-    @apply text-gray-200 flex flex-col justify-center items-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none max-sm:h-screen max-sm:w-full max-sm:px-10;
+    @apply text-gray-200 flex flex-col justify-center items-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none max-sm:h-auto max-sm:w-full max-sm:px-6 max-sm:text-center;
+  }
 
-    .small-screen {
-      @apply sm:hidden m-7 bg-red-300/20 backdrop-blur-lg p-3 rounded-md absolute top-10;
+  #dock {
+    @apply absolute bottom-5 left-1/2 -translate-x-1/2 z-50 select-none max-sm:left-0 max-sm:right-0 max-sm:translate-x-0 max-sm:px-5;
 
-      p {
-        @apply flex-1 text-[16px] text-center font-roboto text-gray-400;
+    .dock-container {
+      @apply bg-white/20 backdrop-blur-md justify-between rounded-2xl p-1.5 flex items-end gap-1.5 max-sm:bg-white/15 max-sm:backdrop-blur-2xl max-sm:rounded-3xl max-sm:p-3 max-sm:items-center max-sm:justify-evenly max-sm:w-full;
+    }
+
+    .tooltip {
+      @apply !py-1 !px-3 !w-fit !text-center !text-xs !rounded-md !bg-blue-200 !text-blue-900 !shadow-2xl max-sm:hidden;
+    }
+
+    .dock-icon {
+      @apply size-18 3xl:size-20 cursor-pointer max-sm:size-18;
+
+      img {
+        @apply object-cover object-center max-sm:rounded-2xl;
       }
     }
   }
 
-  #dock {
-    @apply absolute bottom-5 left-1/2 -translate-x-1/2 z-50 select-none max-sm:hidden;
+  #mobile-navbar {
+    @apply hidden max-sm:flex justify-between items-center py-3 px-5 gap-5 relative bg-transparent select-none;
+    z-index: 10000;
 
-    .dock-container {
-      @apply bg-white/20 backdrop-blur-md justify-between rounded-2xl p-1.5 flex items-end gap-1.5;
+    time {
+      @apply text-sm font-semibold;
     }
 
-    .tooltip {
-      @apply !py-1 !px-3 !w-fit !text-center !text-xs !rounded-md !bg-blue-200 !text-blue-900 !shadow-2xl;
+    .notch {
+      @apply bg-black flex-1 rounded-full px-2 py-5 max-w-40;
     }
 
-    .dock-icon {
-      @apply size-14 3xl:size-20 cursor-pointer;
-
-      img {
-        @apply object-cover object-center;
-      }
+    ul {
+      @apply flex items-center gap-2;
     }
+
+    &.has-window {
+      @apply bg-white;
+    }
+  }
+
+  .mobile-window {
+    @apply bg-white flex flex-col overflow-hidden;
+    position: fixed !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    top: 50px !important;
+    inset: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: calc(100dvh - 50px) !important;
+    transform: none !important;
+    border-radius: 0 !important;
+    z-index: 40 !important;
+  }
+
+  .mobile-window-inner {
+    @apply flex flex-col h-full w-full;
+  }
+
+  .mobile-window-header {
+    @apply flex items-center justify-between gap-2 px-3 py-3 border-b border-gray-200 bg-gray-50 select-none;
+
+    .mobile-back {
+      @apply flex items-center gap-1 text-blue-600 text-sm font-medium min-w-[84px];
+    }
+
+    .mobile-title {
+      @apply flex-1 text-center text-sm font-semibold text-gray-800 truncate;
+    }
+
+    .mobile-header-spacer {
+      @apply min-w-[84px];
+    }
+  }
+
+  .mobile-window-body {
+    @apply flex-1 overflow-auto bg-white;
   }
 
   #window-controls {
@@ -128,7 +188,7 @@ body {
     }
 
     .blog {
-      @apply bg-white p-10 max-w-3xl mx-auto;
+      @apply bg-white p-10 max-w-3xl mx-auto max-sm:p-4 max-sm:max-w-full;
 
       h2 {
         @apply text-xl font-bold text-pink-600 mb-10;
@@ -218,10 +278,10 @@ body {
     }
 
     ul {
-      @apply flex items-center gap-3;
+      @apply flex items-center gap-3 max-sm:flex-wrap;
 
       li {
-        @apply rounded-lg p-3 w-60 hover:-translate-y-0.5 hover:scale-105 origin-center transition-all duration-300;
+        @apply rounded-lg p-3 w-60 max-sm:w-full hover:-translate-y-0.5 hover:scale-105 origin-center transition-all duration-300;
 
         a {
           @apply space-y-5;
@@ -374,6 +434,86 @@ body {
     }
   }
 
+  .safari-mobile-footer {
+    @apply sticky bottom-0 bg-gray-100/95 backdrop-blur border-t border-gray-200 p-3 space-y-3;
+
+    .safari-mobile-search {
+      @apply flex items-center gap-2 bg-white rounded-xl px-3 py-2 shadow-sm;
+
+      input {
+        @apply flex-1 text-sm text-gray-700 placeholder:text-gray-400 outline-none;
+      }
+    }
+
+    .safari-mobile-icons {
+      @apply flex items-center justify-around px-2;
+    }
+  }
+
+  .finder-mobile {
+    @apply flex flex-col h-full bg-white;
+  }
+
+  .finder-breadcrumb {
+    @apply flex items-center flex-wrap gap-1 px-4 py-2 border-b border-gray-200 text-xs text-gray-500;
+
+    .crumb {
+      @apply flex items-center gap-1;
+    }
+
+    .crumb.current {
+      @apply text-gray-900 font-semibold;
+    }
+
+    .sep {
+      @apply text-gray-300;
+    }
+  }
+
+  .finder-mobile-grid {
+    @apply grid grid-cols-3 gap-4 p-5 content-start;
+
+    li {
+      @apply flex flex-col items-center gap-2 cursor-pointer select-none;
+
+      img {
+        @apply size-16 object-contain;
+      }
+
+      p {
+        @apply text-xs text-center text-gray-800 line-clamp-2;
+      }
+    }
+  }
+
+  .file-viewer {
+    @apply p-5 overflow-auto;
+
+    &.image img {
+      @apply w-full h-auto object-contain rounded-md;
+    }
+
+    &.text {
+      @apply space-y-3;
+
+      img {
+        @apply w-full max-h-64 object-cover rounded mb-2;
+      }
+
+      h3 {
+        @apply text-base font-semibold;
+      }
+
+      p {
+        @apply text-sm leading-relaxed text-gray-700;
+      }
+    }
+
+    &.pdf {
+      @apply flex justify-center;
+    }
+  }
+
   #home {
     @apply relative z-0 max-sm:hidden;
 
@@ -387,6 +527,28 @@ body {
 
         p {
           @apply text-sm text-white text-center px-1 rounded-md group-hover:bg-blue-500 transition-colors max-w-40;
+        }
+      }
+    }
+  }
+
+  #home-mobile {
+    @apply absolute top-28 left-5 z-0 select-none sm:hidden;
+
+    ul {
+      @apply flex flex-row gap-6 flex-nowrap;
+
+      li {
+        @apply flex flex-col items-center gap-1 cursor-pointer;
+
+        img {
+          width: 80px;
+          height: 80px;
+          @apply object-contain rounded-2xl;
+        }
+
+        p {
+          @apply text-xs text-white text-center font-medium;
         }
       }
     }

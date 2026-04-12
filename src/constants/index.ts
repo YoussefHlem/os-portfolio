@@ -581,6 +581,19 @@ export const locations = {
   trash: TRASH_LOCATION,
 } satisfies Record<LocationType, RootFolder>;
 
+export const portfolioRoot: FolderNode = {
+  id: 0,
+  name: "Portfolio",
+  icon: "/images/finder.png",
+  kind: "folder",
+  children: [
+    { ...WORK_LOCATION, icon: "/images/folder.png" },
+    { ...ABOUT_LOCATION, icon: "/images/folder.png" },
+    { ...RESUME_LOCATION, icon: "/images/folder.png" },
+    { ...TRASH_LOCATION, icon: "/images/folder.png" },
+  ],
+};
+
 const INITIAL_Z_INDEX = 1000;
 
 type WindowConfigEntry = {

@@ -1,16 +1,20 @@
 import React from "react";
-import WindowWrapper from "@/hoc/WindowWrapper";
+import WindowWrapper, { useMobileWindow } from "@/hoc/WindowWrapper";
 import { socials } from "@/constants";
 import WindowControls from "@/components/WindowControls";
 import { Mail, MessageCircle } from "lucide-react";
 
 const Contact = () => {
+  const ctx = useMobileWindow();
+  const isMobile = ctx?.isMobile ?? false;
   return (
     <>
-      <div id={"window-header"}>
-        <WindowControls target={"contact"} />
-        <h2>Contact Me</h2>
-      </div>
+      {!isMobile && (
+        <div id={"window-header"}>
+          <WindowControls target={"contact"} />
+          <h2>Contact Me</h2>
+        </div>
+      )}
 
       <div className={"p-5 space-y-5"}>
         <img
@@ -72,5 +76,5 @@ const Contact = () => {
   );
 };
 
-const ContactWindow = WindowWrapper(Contact, "contact");
+const ContactWindow = WindowWrapper(Contact, "contact", { title: "Contact" });
 export default ContactWindow;

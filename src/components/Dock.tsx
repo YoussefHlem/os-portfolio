@@ -3,13 +3,20 @@ import { Tooltip } from "react-tooltip";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
-import { useRef } from "react";
+import { useMemo, useRef } from "react";
 import { dockApps, type DockApp } from "@/constants";
 import useWindowStore from "@/store/window";
+import useIsMobile from "@/hooks/useIsMobile";
 
 const Dock = () => {
   const { openWindow, closeWindow, windows } = useWindowStore();
   const dockRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
+
+  const apps = useMemo(
+    () => (isMobile ? dockApps.filter((a) => a.id !== "trash") : dockApps),
+    [isMobile],
+  );
 
   useGSAP(() => {
     const dock = dockRef.current;
@@ -56,6 +63,8 @@ const Dock = () => {
     };
   }, []);
 
+  const hasOpenWindow = isMobile && Object.values(windows).some((w) => w.isOpen);
+
   const toggleApp = (app: DockApp) => {
     if (!app.canOpen) return;
     const win = windows[app.id];
@@ -68,10 +77,12 @@ const Dock = () => {
     }
   };
 
+  if (hasOpenWindow) return null;
+
   return (
     <section id="dock">
       <div ref={dockRef} className="dock-container">
-        {dockApps.map((app) => (
+        {apps.map((app) => (
           <div key={app.id} className="relative flex justify-center">
             <button
               type="button"

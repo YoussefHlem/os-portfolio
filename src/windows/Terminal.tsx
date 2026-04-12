@@ -1,17 +1,21 @@
 "use client";
 import React from "react";
-import WindowWrapper from "@/hoc/WindowWrapper";
+import WindowWrapper, { useMobileWindow } from "@/hoc/WindowWrapper";
 import { techStack } from "@/constants";
 import { Check, Flag } from "lucide-react";
 import WindowControls from "@/components/WindowControls";
 
 const Terminal = () => {
+  const ctx = useMobileWindow();
+  const isMobile = ctx?.isMobile ?? false;
   return (
     <>
-      <div id={"window-header"}>
-        <WindowControls target={"terminal"} />
-        <h2>Tech Stack</h2>
-      </div>
+      {!isMobile && (
+        <div id={"window-header"}>
+          <WindowControls target={"terminal"} />
+          <h2>Tech Stack</h2>
+        </div>
+      )}
       <div className={"techstack"}>
         <p>
           <span className={"font-bold"}>@youssef % </span>
@@ -52,6 +56,8 @@ const Terminal = () => {
     </>
   );
 };
-const TerminalWindow = WindowWrapper(Terminal, "terminal");
+const TerminalWindow = WindowWrapper(Terminal, "terminal", {
+  title: "Tech Stack",
+});
 
 export default TerminalWindow;

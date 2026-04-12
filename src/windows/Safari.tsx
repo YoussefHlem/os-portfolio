@@ -1,7 +1,8 @@
 import React from "react";
-import WindowWrapper from "@/hoc/WindowWrapper";
+import WindowWrapper, { useMobileWindow } from "@/hoc/WindowWrapper";
 import WindowControls from "@/components/WindowControls";
 import {
+  BookOpen,
   ChevronLeft,
   ChevronRight,
   Copy,
@@ -11,42 +12,49 @@ import {
   Search,
   Share,
   ShieldHalf,
+  Upload,
 } from "lucide-react";
 import { blogPosts } from "@/constants";
 
 const Safari = () => {
+  const ctx = useMobileWindow();
+  const isMobile = ctx?.isMobile ?? false;
+
   return (
     <>
-      <div id={"window-header"}>
-        <WindowControls target={"safari"} />
+      {!isMobile && (
+        <div id={"window-header"}>
+          <WindowControls target={"safari"} />
 
-        <PanelLeft className={"ml-10 icon"} />
+          <PanelLeft className={"ml-10 icon"} />
 
-        <div className={"flex items-center gap-1 ml-5"}>
-          <ChevronLeft className={"icon"} />
-          <ChevronRight className={"icon"} />
-        </div>
+          <div className={"flex items-center gap-1 ml-5"}>
+            <ChevronLeft className={"icon"} />
+            <ChevronRight className={"icon"} />
+          </div>
 
-        <div className={"flex-1 flex-center gap-3"}>
-          <ShieldHalf className={"icon"} />
+          <div className={"flex-1 flex-center gap-3"}>
+            <ShieldHalf className={"icon"} />
 
-          <div className={"search"}>
-            <Search className={"icon"} />
+            <div className={"search"}>
+              <Search className={"icon"} />
 
-            <input
-              type={"text"}
-              placeholder={"Search or enter website name"}
-              className={"flex-1"}
-            />
+              <input
+                type={"text"}
+                placeholder={"Search or enter website name"}
+                className={"flex-1"}
+              />
+            </div>
+          </div>
+
+          <div className={"flex items-center gap-5"}>
+            <Share className={"icon"} />
+            <Plus className={"icon"} />
+            <Copy className={"icon"} />
           </div>
         </div>
+      )}
 
-        <div className={"flex items-center gap-5"}>
-          <Share className={"icon"} />
-          <Plus className={"icon"} />
-          <Copy className={"icon"} />
-        </div>
-      </div>
       <div className={"blog"}>
         <h2> My Developer Blog</h2>
 
@@ -69,10 +77,29 @@ const Safari = () => {
           </div>
         ))}
       </div>
+
+      {isMobile && (
+        <div className={"safari-mobile-footer"}>
+          <div className={"safari-mobile-search"}>
+            <Search className={"size-4 text-gray-500"} />
+            <input
+              type={"text"}
+              placeholder={"Search or enter website name"}
+            />
+          </div>
+          <div className={"safari-mobile-icons"}>
+            <ChevronLeft className={"size-6 text-gray-500"} />
+            <ChevronRight className={"size-6 text-gray-500"} />
+            <Upload className={"size-6 text-blue-500"} />
+            <BookOpen className={"size-6 text-blue-500"} />
+            <Copy className={"size-6 text-blue-500"} />
+          </div>
+        </div>
+      )}
     </>
   );
 };
 
-const SafariWindow = WindowWrapper(Safari, "safari");
+const SafariWindow = WindowWrapper(Safari, "safari", { title: "Articles" });
 
 export default SafariWindow;
