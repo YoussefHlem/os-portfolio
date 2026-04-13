@@ -1,18 +1,30 @@
 import React from "react";
-import { navIcons, navLinks } from "@/constants";
+import { locations, navIcons, navLinks } from "@/constants";
 import dayjs from "dayjs";
 import useWindowStore from "@/store/window";
+import useLocationStore from "@/store/location";
 import { Battery, Wifi } from "lucide-react";
+
+const NAV_LOCATION_MAP: Record<string, keyof typeof locations | undefined> = {
+  Experience: "work",
+  Projects: "projects",
+};
 
 const Navbar = () => {
   const { openWindow, closeWindow, windows } = useWindowStore();
+  const { setActiveLocation } = useLocationStore();
 
   const hasOpenWindow = Object.values(windows).some((w) => w.isOpen);
 
-  const toggleWindow = (key: (typeof navLinks)[number]["type"]) => {
-    if (windows[key]?.isOpen) {
+  const toggleWindow = (
+    key: (typeof navLinks)[number]["type"],
+    name: string,
+  ) => {
+    const locationKey = NAV_LOCATION_MAP[name];
+    if (windows[key]?.isOpen && !locationKey) {
       closeWindow(key);
     } else {
+      if (locationKey) setActiveLocation(locations[locationKey]);
       openWindow(key);
     }
   };
@@ -25,7 +37,10 @@ const Navbar = () => {
 
           <ul>
             {navLinks.map((item) => (
-              <li key={item.id} onClick={() => toggleWindow(item.type)}>
+              <li
+                key={item.id}
+                onClick={() => toggleWindow(item.type, item.name)}
+              >
                 <p>{item.name}</p>
               </li>
             ))}

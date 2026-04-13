@@ -5,7 +5,7 @@
 // ──────────────────────────────────────────────────────────────────────
 
 export type FileType = "txt" | "url" | "img" | "fig" | "pdf";
-export type LocationType = "work" | "about" | "resume" | "trash";
+export type LocationType = "work" | "projects" | "about" | "resume" | "trash";
 
 type BaseNode = {
   id: number;
@@ -98,6 +98,11 @@ export type GalleryItem = {
 const navLinks = [
   {
     id: 1,
+    name: "Experience",
+    type: "finder",
+  },
+  {
+    id: 2,
     name: "Projects",
     type: "finder",
   },
@@ -192,28 +197,24 @@ const blogPosts = [
 
 const techStack = [
   {
-    category: "Frontend",
-    items: ["React.js", "Next.js", "TypeScript"],
+    category: "Languages",
+    items: ["JavaScript (ES6+)", "TypeScript", "HTML/CSS"],
   },
   {
-    category: "Mobile",
-    items: ["React Native", "Expo"],
+    category: "Frameworks",
+    items: ["React.js", "Next.js", "React Native", "Redux"],
   },
   {
-    category: "Styling",
-    items: ["Tailwind CSS", "Sass", "CSS"],
+    category: "UI Technologies",
+    items: ["Tailwind CSS", "SASS", "Chakra UI", "Shadcn", "Material UI"],
   },
   {
-    category: "Backend",
-    items: ["Node.js", "Express", "NestJS", "Hono"],
-  },
-  {
-    category: "Database",
-    items: ["MongoDB", "PostgreSQL"],
+    category: "Specialized",
+    items: ["GIS (ArcGIS/Leaflet)", "Responsive Design", "TDD"],
   },
   {
     category: "Dev Tools",
-    items: ["Git", "GitHub", "Docker"],
+    items: ["Git", "Azure", "Design Patterns"],
   },
 ] as const satisfies readonly TechCategory[];
 
@@ -223,28 +224,28 @@ const socials = [
     text: "Github",
     icon: "/icons/github.svg",
     bg: "#f4656b",
-    link: "https://github.com/JavaScript-Mastery-Pro",
+    link: "https://github.com/YoussefHlem",
   },
   {
     id: 2,
-    text: "Platform",
+    text: "Email",
     icon: "/icons/atom.svg",
     bg: "#4bcb63",
-    link: "https://jsmastery.com/",
+    link: "mailto:youssefhlemdev@gmail.com",
   },
   {
     id: 3,
-    text: "Twitter/X",
+    text: "Phone",
     icon: "/icons/twitter.svg",
     bg: "#ff866b",
-    link: "https://x.com/jsmasterypro",
+    link: "tel:+201068017738",
   },
   {
     id: 4,
     text: "LinkedIn",
     icon: "/icons/linkedin.svg",
     bg: "#05b6f6",
-    link: "https://www.linkedin.com/company/javascriptmastery/posts/?feedView=all",
+    link: "https://linkedin.com/in/youssef-hlem-002bb1266",
   },
 ] as const satisfies readonly Social[];
 
@@ -309,67 +310,55 @@ export {
 const WORK_LOCATION: RootFolder = {
   id: 1,
   type: "work",
-  name: "Work",
+  name: "Experience",
   icon: "/icons/work.svg",
   kind: "folder",
   children: [
-    // ▶ Project 1
+    // ▶ Experience 1 — Bitech Company
     {
       id: 5,
-      name: "Nike Ecommerce Website Application",
+      name: "Bitech Company",
       icon: "/images/folder.png",
       kind: "folder",
-      position: "top-10 left-5", // icon position inside Finder
-      windowPosition: "top-[5vh] left-5", // optional: Finder window position
+      position: "top-10 left-5",
+      windowPosition: "top-[5vh] left-5",
       children: [
         {
           id: 1,
-          name: "Nike Project.txt",
+          name: "Bitech Role.txt",
           icon: "/images/txt.png",
           kind: "file",
           fileType: "txt",
           position: "top-5 left-10",
+          subtitle:
+            "Software Engineer - Frontend Specialist | Jan 2025 - Present",
           description: [
-            "The Nike eCommerce website is a sleek and modern platform designed for shopping the latest Nike collections.",
-            "Instead of a simple online store, it delivers an immersive experience with bold visuals, interactive product displays, and smooth navigation.",
-            "Think of it like walking into a flagship Nike store—but right from your phone or laptop.",
-            "It's built with Next.js and Tailwind, ensuring fast performance, responsive design, and a clean, premium look.",
+            "Architected a multi-tenant SaaS admin dashboard from the ground up using Next.js 16, React 19, and TypeScript, serving HRM and PFP modules with full English/Arabic internationalization.",
+            "Designed and built a reusable foundation layer including an advanced data table system (sorting, filtering, column pinning/reordering/resizing, bulk actions, CSV/XLSX/PDF export), a SQL-like advanced filter builder with AND/OR group logic, and a multi-view data presentation layer (table/board/list).",
+            "Integrated ArcGIS and Leaflet GIS capabilities for spatial data visualization, implementing bi-directional map-table row selection sync and interactive marker/popup systems for incident management.",
+            "Implemented RBAC, dynamic custom fields injection, duplicate detection & merge workflows, bulk archive/restore operations, and real-time data import pipelines with validation across 15+ service modules following clean layered architecture.",
           ],
         },
         {
           id: 2,
-          name: "nike.com",
-          icon: "/images/safari.png",
+          name: "bitech-stack.txt",
+          icon: "/images/txt.png",
           kind: "file",
-          fileType: "url",
-          href: "https://youtu.be/fZdTYswuZjU?si=Awjl-pIst9e09_UU",
+          fileType: "txt",
           position: "top-10 right-20",
-        },
-        {
-          id: 4,
-          name: "nike.png",
-          icon: "/images/image.png",
-          kind: "file",
-          fileType: "img",
-          position: "top-52 right-80",
-          imageUrl: "/images/project-1.png",
-        },
-        {
-          id: 5,
-          name: "Design.fig",
-          icon: "/images/plain.png",
-          kind: "file",
-          fileType: "fig",
-          href: "https://google.com",
-          position: "top-60 right-20",
+          description: [
+            "Tech Stack: Next.js 16, React 19, TypeScript, ArcGIS, Leaflet, Tailwind CSS",
+            "Architecture: Clean layered (domain, infrastructure, application, presentation)",
+            "Location: Cairo, Nasr City",
+          ],
         },
       ],
     },
 
-    // ▶ Project 2
+    // ▶ Experience 2 — Muze Company
     {
       id: 6,
-      name: "AI Resume Analyzer",
+      name: "Muze Company",
       icon: "/images/folder.png",
       kind: "folder",
       position: "top-52 right-80",
@@ -377,52 +366,39 @@ const WORK_LOCATION: RootFolder = {
       children: [
         {
           id: 1,
-          name: "AI Resume Analyzer Project.txt",
+          name: "Muze Role.txt",
           icon: "/images/txt.png",
           kind: "file",
           fileType: "txt",
           position: "top-5 right-10",
+          subtitle: "React.js & React Native Developer | Sep 2023 - Dec 2024",
           description: [
-            "AI Resume Analyzer is a smart tool that helps you perfect your resume with instant feedback.",
-            "Instead of guessing what recruiters want, you get AI-powered insights on keywords, formatting, and overall impact.",
-            "Think of it like having a career coach—pointing out strengths, fixing weaknesses, and boosting your chances of landing interviews.",
-            "It's built with Next.js and Tailwind, so it runs fast, looks professional, and works seamlessly on any device.",
+            "Contributed to enhancing a social media platform by developing and integrating a real-time messaging feature using WebSocket technology.",
+            "Worked closely with senior developers to improve the platform’s UI/UX design, focusing on creating intuitive user interfaces and seamless interactions.",
+            "Built the Muze Mobile App using React Native, ensuring consistent functionality across iOS and Android platforms.",
+            "Collaborated with backend teams to implement API integrations and gained hands-on experience with Redux for state management in complex applications.",
           ],
         },
         {
           id: 2,
-          name: "ai-resume-analyzer.com",
-          icon: "/images/safari.png",
+          name: "muze-stack.txt",
+          icon: "/images/txt.png",
           kind: "file",
-          fileType: "url",
-          href: "https://youtu.be/iYOz165wGkQ?si=R1hs8Legl200m0Cl",
+          fileType: "txt",
           position: "top-20 left-20",
-        },
-        {
-          id: 4,
-          name: "ai-resume-analyzer.png",
-          icon: "/images/image.png",
-          kind: "file",
-          fileType: "img",
-          position: "top-52 left-80",
-          imageUrl: "/images/project-2.png",
-        },
-        {
-          id: 5,
-          name: "Design.fig",
-          icon: "/images/plain.png",
-          kind: "file",
-          fileType: "fig",
-          href: "https://google.com",
-          position: "top-60 left-5",
+          description: [
+            "Tech Stack: React.js, React Native, Redux, WebSocket",
+            "Type: Social Media Platform",
+            "Location: Remote",
+          ],
         },
       ],
     },
 
-    // ▶ Project 3
+    // ▶ Experience 3 — Softigital Company
     {
       id: 7,
-      name: "Food Delivery App",
+      name: "Softigital Company",
       icon: "/images/folder.png",
       kind: "folder",
       position: "top-10 left-80",
@@ -430,44 +406,157 @@ const WORK_LOCATION: RootFolder = {
       children: [
         {
           id: 1,
-          name: "Food Delivery App Project.txt",
+          name: "Softigital Role.txt",
           icon: "/images/txt.png",
           kind: "file",
           fileType: "txt",
           position: "top-5 left-10",
+          subtitle: "React.js & React Native Developer | Jun 2022 - Sep 2023",
           description: [
-            "Our Food Delivery App is a fast and convenient way to order meals from your favorite restaurants.",
-            "Instead of making calls or waiting in line, you can browse menus, customize orders, and track deliveries in real time.",
-            "Think of it like having your favorite restaurants in your pocket—ready to deliver anytime, anywhere.",
-            "It’s built with React Native, so it works smoothly on both iOS and Android with a clean, modern design.",
+            "Developed and maintained e-commerce platforms and admin dashboards using React.js, focusing on implementing responsive design principles and optimizing component performance.",
+            "Built mobile applications with React Native, ensuring consistent user experiences across different devices and screen sizes.",
+            "Worked collaboratively with cross-functional teams including designers, backend developers, and project managers to deliver projects successfully.",
+            "Gained valuable experience with Git version control, Agile methodologies, and modern CSS frameworks while contributing to various client projects.",
           ],
         },
         {
           id: 2,
-          name: "food-delivery-app.com",
-          icon: "/images/safari.png",
+          name: "softigital-stack.txt",
+          icon: "/images/txt.png",
           kind: "file",
-          fileType: "url",
-          href: "https://youtu.be/LKrX390fJMw?si=cExkuVhf2DTV9G2-",
+          fileType: "txt",
           position: "top-10 right-20",
+          description: [
+            "Tech Stack: React.js, React Native, CSS Frameworks, Git",
+            "Type: E-commerce Platforms & Admin Dashboards",
+            "Location: Giza, 6 October",
+          ],
+        },
+      ],
+    },
+  ],
+};
+
+const PROJECTS_LOCATION: RootFolder = {
+  id: 10,
+  type: "projects",
+  name: "Projects",
+  icon: "/icons/work.svg",
+  kind: "folder",
+  children: [
+    // ▶ Project 1 — OS Portfolio
+    {
+      id: 11,
+      name: "OS Portfolio",
+      icon: "/images/folder.png",
+      kind: "folder",
+      position: "top-10 left-5",
+      windowPosition: "top-[5vh] left-5",
+      children: [
+        {
+          id: 1,
+          name: "OS Portfolio.txt",
+          icon: "/images/txt.png",
+          kind: "file",
+          fileType: "txt",
+          position: "top-5 left-10",
+          image: "/images/project-1.png",
+          subtitle: "macOS-style Portfolio Website",
+          description: [
+            "A creative portfolio website built as a macOS desktop shell with a full windowing system, dock, and Finder-style navigation.",
+            "Built with Next.js 16, React 19, TypeScript, Tailwind CSS, GSAP animations, and Zustand for state management.",
+          ],
         },
         {
-          id: 4,
-          name: "food-delivery-app.png",
+          id: 2,
+          name: "os-portfolio.png",
           icon: "/images/image.png",
           kind: "file",
           fileType: "img",
-          position: "top-52 right-80",
-          imageUrl: "/images/project-3.png",
+          position: "top-10 right-20",
+          imageUrl: "/images/project-1.png",
         },
         {
-          id: 5,
-          name: "Design.fig",
-          icon: "/images/plain.png",
+          id: 3,
+          name: "source-code.com",
+          icon: "/images/safari.png",
           kind: "file",
-          fileType: "fig",
-          href: "https://google.com",
-          position: "top-60 right-20",
+          fileType: "url",
+          href: "https://github.com/YoussefHlem/os-portfolio",
+          position: "top-52 right-80",
+        },
+      ],
+    },
+
+    // ▶ Project 2 — SaaS Admin Dashboard
+    {
+      id: 12,
+      name: "SaaS Admin Dashboard",
+      icon: "/images/folder.png",
+      kind: "folder",
+      position: "top-52 right-80",
+      windowPosition: "top-[20vh] left-7",
+      children: [
+        {
+          id: 1,
+          name: "SaaS Dashboard.txt",
+          icon: "/images/txt.png",
+          kind: "file",
+          fileType: "txt",
+          position: "top-5 right-10",
+          image: "/images/project-2.png",
+          subtitle: "Multi-tenant SaaS Admin Dashboard",
+          description: [
+            "A multi-tenant SaaS admin dashboard built from the ground up with Next.js 16, React 19, and TypeScript, serving HRM and PFP modules with full English/Arabic internationalization.",
+            "Features advanced data tables (sorting, filtering, column pinning/reordering/resizing, bulk actions, CSV/XLSX/PDF export), a SQL-like advanced filter builder with AND/OR group logic, and a multi-view data presentation layer.",
+            "Integrated ArcGIS and Leaflet GIS capabilities for spatial data visualization with bi-directional map-table row selection sync.",
+            "Implements RBAC, dynamic custom fields, duplicate detection & merge workflows, and real-time data import pipelines across 15+ service modules following clean layered architecture.",
+          ],
+        },
+        {
+          id: 2,
+          name: "saas-dashboard.png",
+          icon: "/images/image.png",
+          kind: "file",
+          fileType: "img",
+          position: "top-20 left-20",
+          imageUrl: "/images/project-2.png",
+        },
+      ],
+    },
+
+    // ▶ Project 3 — Muze Mobile App
+    {
+      id: 13,
+      name: "Muze Mobile App",
+      icon: "/images/folder.png",
+      kind: "folder",
+      position: "top-10 left-80",
+      windowPosition: "top-[33vh] left-7",
+      children: [
+        {
+          id: 1,
+          name: "Muze App.txt",
+          icon: "/images/txt.png",
+          kind: "file",
+          fileType: "txt",
+          position: "top-5 left-10",
+          image: "/images/project-3.png",
+          subtitle: "Muze Social Media Mobile App",
+          description: [
+            "A cross-platform social media mobile application built with React Native for iOS and Android.",
+            "Features real-time messaging via WebSocket technology, intuitive UI/UX design, and Redux for state management.",
+            "Integrated with backend APIs for seamless data flow and consistent functionality across platforms.",
+          ],
+        },
+        {
+          id: 2,
+          name: "muze-app.png",
+          icon: "/images/image.png",
+          kind: "file",
+          fileType: "img",
+          position: "top-10 right-20",
+          imageUrl: "/images/project-3.png",
         },
       ],
     },
@@ -488,40 +577,35 @@ const ABOUT_LOCATION: RootFolder = {
       kind: "file",
       fileType: "img",
       position: "top-10 left-5",
-      imageUrl: "/images/adrian.jpg",
+      imageUrl: "/images/me.jpg",
     },
     {
       id: 2,
-      name: "casual-me.png",
-      icon: "/images/image.png",
-      kind: "file",
-      fileType: "img",
-      position: "top-28 right-72",
-      imageUrl: "/images/adrian-2.jpg",
-    },
-    {
-      id: 3,
-      name: "conference-me.png",
-      icon: "/images/image.png",
-      kind: "file",
-      fileType: "img",
-      position: "top-52 left-80",
-      imageUrl: "/images/adrian-3.jpeg",
-    },
-    {
-      id: 4,
       name: "about-me.txt",
       icon: "/images/txt.png",
       kind: "file",
       fileType: "txt",
-      position: "top-60 left-5",
-      subtitle: "Meet the Developer Behind the Code",
-      image: "/images/adrian.jpg",
+      position: "top-28 right-72",
+      subtitle: "Senior Frontend Developer",
+      image: "/images/me.jpg",
       description: [
-        "Hey! I’m Adrian 👋, a web developer who enjoys building sleek, interactive websites that actually work well.",
-        "I specialize in JavaScript, React, and Next.js—and I love making things feel smooth, fast, and just a little bit delightful.",
-        "I’m big on clean UI, good UX, and writing code that doesn’t need a search party to debug.",
-        "Outside of dev work, you'll find me tweaking layouts at 2AM, sipping overpriced coffee, or impulse-buying gadgets I absolutely convinced myself I needed 😅",
+        "Senior Frontend Developer with 4+ years of expertise building scalable enterprise applications using React and Next.js.",
+        "Specialized in architecting robust web solutions for HRM, PFP, and SaaS platforms with GIS integration capabilities (ArcGIS, Leaflet).",
+        "Proven track record in delivering high-performance applications with Test-Driven Development and industry-leading design patterns following clean layered architecture.",
+        "Passionate about leveraging modern technologies and best practices to solve complex business challenges while maintaining code quality and ensuring seamless user experiences.",
+      ],
+    },
+    {
+      id: 3,
+      name: "education.txt",
+      icon: "/images/txt.png",
+      kind: "file",
+      fileType: "txt",
+      position: "top-52 left-80",
+      subtitle: "Education",
+      description: [
+        "Cairo University — Bachelor of Commerce (Aug 2023 - Present)",
+        "Cairo, Egypt",
       ],
     },
   ],
@@ -576,6 +660,7 @@ const TRASH_LOCATION: RootFolder = {
 
 export const locations = {
   work: WORK_LOCATION,
+  projects: PROJECTS_LOCATION,
   about: ABOUT_LOCATION,
   resume: RESUME_LOCATION,
   trash: TRASH_LOCATION,
@@ -588,6 +673,7 @@ export const portfolioRoot: FolderNode = {
   kind: "folder",
   children: [
     { ...WORK_LOCATION, icon: "/images/folder.png" },
+    { ...PROJECTS_LOCATION, icon: "/images/folder.png" },
     { ...ABOUT_LOCATION, icon: "/images/folder.png" },
     { ...RESUME_LOCATION, icon: "/images/folder.png" },
     { ...TRASH_LOCATION, icon: "/images/folder.png" },

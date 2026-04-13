@@ -177,8 +177,13 @@ const Finder = () => {
 
       <div className={"bg-white flex h-full"}>
         <div className={"sidebar"}>
-          {renderList("Favorites", Object.values(locations))}
-          {renderList("Work", locations.work.children)}
+          {renderList("Favorites", [
+            locations.projects,
+            locations.about,
+            locations.resume,
+            locations.trash,
+          ])}
+          {renderList("Experience", locations.work.children)}
         </div>
         <ul className={"content"}>
           {activeLocation.kind === "folder" &&
