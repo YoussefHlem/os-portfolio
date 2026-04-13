@@ -4,19 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0ed1d4f4-7a35-43e9-8f6d-9697bb0fcb7e" name="Changes" comment="Refactor Dock and Safari components for improved mobile experience; update styles and enable trash functionality">
+    <list default="true" id="0ed1d4f4-7a35-43e9-8f6d-9697bb0fcb7e" name="Changes" comment="Refactor page structure: extract ClientShell component and update next.config for export output">
+      <change beforePath="$PROJECT_DIR$/.claude/settings.local.json" beforeDir="false" afterPath="$PROJECT_DIR$/.claude/settings.local.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/adrian-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/adrian-3.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/adrian.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/me.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/gal1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/gal2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/gal3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/gal4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/constants/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/windows/Contact.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/windows/Contact.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/windows/Finder.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/windows/Finder.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,15 +138,67 @@
       <option name="project" value="LOCAL" />
       <updated>1775969258246</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Refactor page structure: extract ClientShell component and update next.config for export output">
+      <option name="closed" value="true" />
+      <created>1776106394063</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1776106394063</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Paths">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="file:$PROJECT_DIR$/src/app/globals.css" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="file:$PROJECT_DIR$/src/windows/Terminal.tsx" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="structure">
+                    <value>
+                      <list>
+                        <option value="file:$PROJECT_DIR$/src/app/globals.css" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Refactor Dock and Safari components for improved mobile experience; update styles and enable trash functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor Dock and Safari components for improved mobile experience; update styles and enable trash functionality" />
+    <MESSAGE value="Refactor page structure: extract ClientShell component and update next.config for export output" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor page structure: extract ClientShell component and update next.config for export output" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

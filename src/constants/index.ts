@@ -173,25 +173,25 @@ const dockApps = [
 const blogPosts = [
   {
     id: 1,
-    date: "Sep 2, 2025",
-    title:
-      "TypeScript Explained: What It Is, Why It Matters, and How to Master It",
-    image: "/images/blog1.png",
-    link: "https://jsmastery.com/blog/typescript-explained-what-it-is-why-it-matters-and-how-to-master-it",
+    date: "Dec 28, 2025",
+    title: "Dashboard Types Every Developer Should Know",
+    image: "/images/blog2.png",
+    link: "https://www.linkedin.com/posts/youssef-hlem-002bb1266_%D9%84%D9%88-%D8%B4%D8%BA%D9%84%D9%83-%D9%83%D9%80-software-frontend-developer-activity-7410761690381864960-u1Fh",
   },
   {
     id: 2,
-    date: "Aug 28, 2025",
-    title: "The Ultimate Guide to Mastering Three.js for 3D Development",
-    image: "/images/blog2.png",
-    link: "https://jsmastery.com/blog/the-ultimate-guide-to-mastering-three-js-for-3d-development",
+    date: "Dec 25, 2025",
+    title: "Advanced TypeScript: Conditional Types, Infer & Template Literals",
+    image: "/images/blog1.png",
+    link: "https://www.linkedin.com/posts/youssef-hlem-002bb1266_%D9%84%D9%88-%D8%B4%D9%81%D8%AA-%D8%A7%D9%84%D8%B5%D9%88%D8%B1%D8%A9-%D8%AF%D9%8A-%D9%88%D8%AD%D8%B3%D9%8A%D8%AA-%D8%A7%D9%86%D9%83-%D8%A8%D8%AA%D8%A8%D8%B5-%D8%B9%D9%84%D9%8A-%D8%AD%D8%A7%D8%AC%D9%87-activity-7409986298792423424-3zrU",
   },
   {
     id: 3,
-    date: "Aug 15, 2025",
-    title: "The Ultimate Guide to Mastering GSAP Animations",
+    date: "Aug 12, 2025",
+    title:
+      "90% of Next.js Performance Issues Come From Wrong Rendering Strategies",
     image: "/images/blog3.png",
-    link: "https://jsmastery.com/blog/the-ultimate-guide-to-mastering-gsap-animations",
+    link: "https://www.linkedin.com/posts/youssef-hlem-002bb1266_90-%D9%85%D9%86-%D9%85%D8%B4%D8%A7%D9%83%D9%84-%D8%A7%D9%84performance-%D8%A7%D9%84%D9%84%D9%8A-%D8%B4%D9%88%D9%81%D8%AA%D9%87%D8%A7-%D9%81%D9%8A-activity-7360905400411471872-EHHL",
   },
 ] as const satisfies readonly BlogPost[];
 
@@ -206,7 +206,7 @@ const techStack = [
   },
   {
     category: "UI Technologies",
-    items: ["Tailwind CSS", "SASS", "Chakra UI", "Shadcn", "Material UI"],
+    items: ["Tailwind CSS", "SASS", "Chakra UI", "Shadcn"],
   },
   {
     category: "Specialized",
