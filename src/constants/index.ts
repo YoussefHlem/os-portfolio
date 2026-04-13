@@ -444,10 +444,10 @@ const PROJECTS_LOCATION: RootFolder = {
   icon: "/icons/work.svg",
   kind: "folder",
   children: [
-    // ▶ Project 1 — OS Portfolio
+    // ▶ Project 1 — HRM & PFP SaaS Dashboard
     {
       id: 11,
-      name: "OS Portfolio",
+      name: "HRM & PFP SaaS Dashboard",
       icon: "/images/folder.png",
       kind: "folder",
       position: "top-10 left-5",
@@ -455,43 +455,34 @@ const PROJECTS_LOCATION: RootFolder = {
       children: [
         {
           id: 1,
-          name: "OS Portfolio.txt",
+          name: "SaaS Dashboard.txt",
           icon: "/images/txt.png",
           kind: "file",
           fileType: "txt",
           position: "top-5 left-10",
-          image: "/images/project-1.png",
-          subtitle: "macOS-style Portfolio Website",
+          subtitle: "Multi-tenant SaaS Admin Dashboard",
           description: [
-            "A creative portfolio website built as a macOS desktop shell with a full windowing system, dock, and Finder-style navigation.",
-            "Built with Next.js 16, React 19, TypeScript, Tailwind CSS, GSAP animations, and Zustand for state management.",
+            "Multi-tenant SaaS admin dashboard — Senior Frontend Developer (Bitech). Architected from the ground up using Next.js 16, React 19, and TypeScript.",
+            "Built an advanced data table system with sorting, filtering, column pinning/reordering/resizing, bulk actions, and CSV/XLSX/PDF export.",
+            "Implemented a SQL-like filter builder with AND/OR group logic and multi-view data presentation (table/board/list).",
           ],
         },
         {
           id: 2,
-          name: "os-portfolio.png",
-          icon: "/images/image.png",
-          kind: "file",
-          fileType: "img",
-          position: "top-10 right-20",
-          imageUrl: "/images/project-1.png",
-        },
-        {
-          id: 3,
           name: "source-code.com",
           icon: "/images/safari.png",
           kind: "file",
           fileType: "url",
-          href: "https://github.com/YoussefHlem/os-portfolio",
-          position: "top-52 right-80",
+          href: "https://github.com/YoussefHlem",
+          position: "top-10 right-20",
         },
       ],
     },
 
-    // ▶ Project 2 — SaaS Admin Dashboard
+    // ▶ Project 2 — GIS Incident Management
     {
       id: 12,
-      name: "SaaS Admin Dashboard",
+      name: "GIS Incident Management",
       icon: "/images/folder.png",
       kind: "folder",
       position: "top-52 right-80",
@@ -499,36 +490,33 @@ const PROJECTS_LOCATION: RootFolder = {
       children: [
         {
           id: 1,
-          name: "SaaS Dashboard.txt",
+          name: "GIS Platform.txt",
           icon: "/images/txt.png",
           kind: "file",
           fileType: "txt",
           position: "top-5 right-10",
-          image: "/images/project-2.png",
-          subtitle: "Multi-tenant SaaS Admin Dashboard",
+          subtitle: "Spatial Data Visualization Platform",
           description: [
-            "A multi-tenant SaaS admin dashboard built from the ground up with Next.js 16, React 19, and TypeScript, serving HRM and PFP modules with full English/Arabic internationalization.",
-            "Features advanced data tables (sorting, filtering, column pinning/reordering/resizing, bulk actions, CSV/XLSX/PDF export), a SQL-like advanced filter builder with AND/OR group logic, and a multi-view data presentation layer.",
-            "Integrated ArcGIS and Leaflet GIS capabilities for spatial data visualization with bi-directional map-table row selection sync.",
-            "Implements RBAC, dynamic custom fields, duplicate detection & merge workflows, and real-time data import pipelines across 15+ service modules following clean layered architecture.",
+            "Spatial data visualization platform — Senior Frontend Developer (Bitech). Integrated ArcGIS and Leaflet for interactive mapping.",
+            "Implementing bi-directional map-table row selection sync and marker/popup systems for incident management across 15+ service modules.",
           ],
         },
         {
           id: 2,
-          name: "saas-dashboard.png",
-          icon: "/images/image.png",
+          name: "source-code.com",
+          icon: "/images/safari.png",
           kind: "file",
-          fileType: "img",
+          fileType: "url",
+          href: "https://github.com/YoussefHlem",
           position: "top-20 left-20",
-          imageUrl: "/images/project-2.png",
         },
       ],
     },
 
-    // ▶ Project 3 — Muze Mobile App
+    // ▶ Project 3 — RBAC & Custom Fields Platform
     {
       id: 13,
-      name: "Muze Mobile App",
+      name: "RBAC & Custom Fields Platform",
       icon: "/images/folder.png",
       kind: "folder",
       position: "top-10 left-80",
@@ -536,27 +524,25 @@ const PROJECTS_LOCATION: RootFolder = {
       children: [
         {
           id: 1,
-          name: "Muze App.txt",
+          name: "RBAC Platform.txt",
           icon: "/images/txt.png",
           kind: "file",
           fileType: "txt",
           position: "top-5 left-10",
-          image: "/images/project-3.png",
-          subtitle: "Muze Social Media Mobile App",
+          subtitle: "Enterprise Access Control System",
           description: [
-            "A cross-platform social media mobile application built with React Native for iOS and Android.",
-            "Features real-time messaging via WebSocket technology, intuitive UI/UX design, and Redux for state management.",
-            "Integrated with backend APIs for seamless data flow and consistent functionality across platforms.",
+            "Enterprise access control system — Senior Frontend Developer (Bitech). Implemented Role-Based Access Control, dynamic custom fields injection, duplicate detection & merge workflows.",
+            "Built bulk archive/restore operations and real-time data import pipelines with validation following clean layered architecture (domain, infrastructure, application, presentation).",
           ],
         },
         {
           id: 2,
-          name: "muze-app.png",
-          icon: "/images/image.png",
+          name: "source-code.com",
+          icon: "/images/safari.png",
           kind: "file",
-          fileType: "img",
+          fileType: "url",
+          href: "https://github.com/YoussefHlem",
           position: "top-10 right-20",
-          imageUrl: "/images/project-3.png",
         },
       ],
     },
