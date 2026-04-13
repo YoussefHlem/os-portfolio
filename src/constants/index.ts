@@ -37,7 +37,8 @@ export type RootFolder = FolderNode & { type: LocationType };
 export type NavLink = {
   id: number;
   name: string;
-  type: WindowKey;
+  type?: WindowKey;
+  href?: string;
 };
 
 export type NavIcon = {
@@ -115,6 +116,11 @@ const navLinks = [
     id: 4,
     name: "Resume",
     type: "resume",
+  },
+  {
+    id: 5,
+    name: "Website Version",
+    href: "https://youssef-halim-3d-portfolio.vercel.app/",
   },
 ] as const satisfies readonly NavLink[];
 

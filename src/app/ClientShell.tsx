@@ -13,6 +13,7 @@ import TextWindow from "@/windows/Text";
 import ImageWindow from "@/windows/Image";
 import ContactWindow from "@/windows/Contact";
 import Home from "@/components/Home";
+import WebsiteVersionPopup from "@/components/WebsiteVersionPopup";
 import ResumeWindow from "@/windows/Resume";
 
 gsap.registerPlugin(Draggable);
@@ -32,6 +33,7 @@ export default function ClientShell() {
       <ImageWindow />
       <ContactWindow />
       <Home />
+      <WebsiteVersionPopup />
     </main>
   );
 }

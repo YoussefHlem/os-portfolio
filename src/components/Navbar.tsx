@@ -1,5 +1,5 @@
 import React from "react";
-import { locations, navIcons, navLinks } from "@/constants";
+import { type WindowKey, locations, navIcons, navLinks } from "@/constants";
 import dayjs from "dayjs";
 import useWindowStore from "@/store/window";
 import useLocationStore from "@/store/location";
@@ -16,10 +16,7 @@ const Navbar = () => {
 
   const hasOpenWindow = Object.values(windows).some((w) => w.isOpen);
 
-  const toggleWindow = (
-    key: (typeof navLinks)[number]["type"],
-    name: string,
-  ) => {
+  const toggleWindow = (key: WindowKey, name: string) => {
     const locationKey = NAV_LOCATION_MAP[name];
     if (windows[key]?.isOpen && !locationKey) {
       closeWindow(key);
@@ -36,14 +33,28 @@ const Navbar = () => {
           <p className={"font-bold"}>Youssef's Portfolio</p>
 
           <ul>
-            {navLinks.map((item) => (
-              <li
-                key={item.id}
-                onClick={() => toggleWindow(item.type, item.name)}
-              >
-                <p>{item.name}</p>
-              </li>
-            ))}
+            {navLinks.map((item) =>
+              "href" in item ? (
+                <li key={item.id}>
+                  <p>
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {item.name}
+                    </a>
+                  </p>
+                </li>
+              ) : (
+                <li
+                  key={item.id}
+                  onClick={() => toggleWindow(item.type, item.name)}
+                >
+                  <p>{item.name}</p>
+                </li>
+              ),
+            )}
           </ul>
         </div>
         <div>
